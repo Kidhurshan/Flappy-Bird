@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -8,17 +9,18 @@ import java.util.ArrayList;
 
 public class Gamelogic implements KeyListener {
     private Bird bird;
-    private ArrayList<Pipe> pipes;
-    private int score;
-    private boolean gameOver =false;
+    public ArrayList<Pipe> pipes;
+    public int score;
+    public boolean gameOver =false;
     private  int birdVelocityY = -10;
     private  int pipeVelocityX = -4;
     private final int gravity = 1;
     private Timer gameLoop;
     private Timer pipeLoop;
+    public GamePanel panel;
 
-    Gamelogic(){
-        GamePanel panel = new GamePanel();
+    Gamelogic(GamePanel panel){
+        this.panel = panel;
         gameLoop = new Timer(1000 / 60, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,11 +44,13 @@ public class Gamelogic implements KeyListener {
     }
 
     private void placePipe() {
-        Pipe topPipe = new Pipe();
+        Image topPipeImg = new ImageIcon(getClass().getResource("toppipe.png")).getImage();
+        Pipe topPipe = new Pipe(topPipeImg);
         topPipe.pipePositionY= (int)(topPipe.pipePositionY - topPipe.PipeHeight/4 - Math.random()*topPipe.PipeHeight/2);
         pipes.add(topPipe);
 
-        Pipe bottomPipe = new Pipe();
+        Image bottomPipeImg = new ImageIcon(getClass().getResource("bottompipe.png")).getImage();
+        Pipe bottomPipe = new Pipe(bottomPipeImg);
         bottomPipe.pipePositionY = (int)(topPipe.pipePositionY + bottomPipe.PipeHeight/Math.min(Math.random()*10,4) + bottomPipe.PipeHeight);
         pipes.add(bottomPipe);
     }
