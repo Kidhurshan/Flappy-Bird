@@ -3,6 +3,7 @@ public class Pipe {
     public int pipePositionY = 0 ;
     public int PipeHeight = 512;
     public int PipeWidth = 64;
+    public boolean isBirdMoved = false;
 
     Pipe(){
         GamePanel panel = new GamePanel();
