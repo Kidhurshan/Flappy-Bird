@@ -92,6 +92,14 @@ public class Gamelogic implements KeyListener {
     }
 
     private void reset() {
+        gameOver = false;
+        birdVelocityY = -10;
+        pipes.clear();
+        pipeVelocityX =-4;
+        score =0;
+        bird.birdPositionY = 320;
+        gameLoop.start();
+        pipeLoop.start();
 
     }
 
