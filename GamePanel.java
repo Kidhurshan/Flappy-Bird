@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GamePanel extends JPanel implements KeyListener {
-    private int panelHorizontal = 640;
-    private int panelVertical = 360;
+    public int panelHorizontal = 360;
+    public int panelVertical = 640;
     private Image birdImage;
     private Image bottomPipe;
     private Image topPipe;
