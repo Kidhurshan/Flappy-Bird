@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
-public class GamePanel extends JPanel implements KeyListener {
+public class GamePanel extends JPanel {
     public int panelHorizontal = 360;
     public int panelVertical = 640;
     private Image birdImage;
@@ -11,10 +12,10 @@ public class GamePanel extends JPanel implements KeyListener {
     private Image topPipe;
     private Image background;
 
+
     public GamePanel(){
         setPreferredSize(new Dimension(panelHorizontal,panelVertical));
         setFocusable(true);
-        addKeyListener(this);
 
         //set up the images
         try{
@@ -37,21 +38,5 @@ public class GamePanel extends JPanel implements KeyListener {
     public void paint(Graphics g){
         super.paintComponent(g);
         draw(g);
-    }
-
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
     }
 }
