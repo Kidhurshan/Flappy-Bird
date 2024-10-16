@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GameFrame extends JFrame {
+public class GameFrame {
     private JFrame frame;
     private GamePanel panel;
     private int frameHorizontal = 330 ;

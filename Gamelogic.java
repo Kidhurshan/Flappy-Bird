@@ -19,8 +19,10 @@ public class Gamelogic implements KeyListener {
     private Timer pipeLoop;
     public GamePanel panel;
 
-    Gamelogic(GamePanel panel){
+    Gamelogic(GamePanel panel, Bird bird){
         this.panel = panel;
+        this.bird = bird;
+        pipes = new ArrayList<>();
         gameLoop = new Timer(1000 / 60, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,17 +86,6 @@ public class Gamelogic implements KeyListener {
                 bird.birdPositionY + bird.birdHeight >pipe.pipePositionY;
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            birdVelocityY = -10;
-
-        }
-        if(e.getKeyCode() == KeyEvent.VK_R){
-            reset();
-        }
-    }
-
     private void reset() {
         gameOver = false;
         birdVelocityY = -10;
@@ -109,11 +100,22 @@ public class Gamelogic implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            birdVelocityY = -10;
 
+        }
+        if(e.getKeyCode() == KeyEvent.VK_R){
+            reset();
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
 
     }
 }

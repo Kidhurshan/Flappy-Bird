@@ -17,10 +17,10 @@ public class GamePanel extends JPanel {
     public GamePanel(){
         setPreferredSize(new Dimension(panelHorizontal,panelVertical));
         setFocusable(true);
-
         //set Bird
         bird = new Bird();
-        gamelogic = new Gamelogic(this);
+        gamelogic = new Gamelogic(this,bird);
+        addKeyListener(gamelogic);
 
         //set up the images
         try{
@@ -35,11 +35,12 @@ public class GamePanel extends JPanel {
     }
 
     private void draw(Graphics g) {
-        g.drawImage(birdImage,bird.birdPositionX, bird.birdPositionY,bird.birdWidth,bird.birdHeight,null);
         g.drawImage(background,0,0,360,640,null);
         for(Pipe pipe: gamelogic.pipes){
             g.drawImage(pipe.image,pipe.pipePositionX, pipe.pipePositionY,pipe.PipeWidth, pipe.PipeHeight, null);
         }
+        g.drawImage(birdImage,bird.birdPositionX, bird.birdPositionY,bird.birdWidth,bird.birdHeight,null);
+
         if(gamelogic.gameOver){
             g.setColor(Color.red);
             g.setFont(new Font("Bodoni MT Black", Font.BOLD, 35));
